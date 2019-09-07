@@ -19,6 +19,7 @@ Links:<br />
 * An inbuilt mini-game to keep them entertained while they are waiting.<br />
 * A chatbot is also added to the application to answer simple queries about the bank.<br />
 * A user-friendly dashboard for the bank employees to control the queue.<br />
+* A vibration based alert system when its the user's turn.<br />
 
 
 ### How it works:
