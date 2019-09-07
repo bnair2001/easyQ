@@ -1,0 +1,150 @@
+.slider-container-component {
+  position: relative;
+  @white: #ffffff;
+  @darkestgrey: #464646;
+  @darkergrey: #929292;
+  @grey: #bcbcbc;
+  @lightergrey: #dcdcdc;
+  @lightestgrey: #f8f8f8;
+  @rainbow: linear-gradient(to right, #F660FF, #65BAFA, #8FEC51);
+  @medium-shadow: 0 1px 3px 0px fade(black, 15%);
+
+  .slider {
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    margin: 6px 0;
+
+    &__track {
+      position: relative;
+      height: 12px;
+      cursor: pointer;
+      background: @rainbow;
+      border-radius: 6px;
+      margin: 6px 12px;
+      box-shadow: inset 0 0 0 1px fade(black, 20%);
+    }
+
+    &__handle {
+      user-select: none;
+      border: 1px solid @grey;
+      height: 24px;
+      width: 24px;
+      border-radius: 12px;
+      background: @white;
+      cursor: pointer;
+      box-shadow: @medium-shadow;
+      margin-top: -6px;
+      display: inline-block;
+      position: absolute;
+      z-index: 1;
+      transition: transform .2s ease;
+      &.react-draggable-dragging {
+        transition: none;
+      }
+    }
+
+    &__ticks, &__markers {
+      position: absolute;
+      width: 100%;
+      margin-top: 1px;
+      line-height: 0;
+      cursor: pointer;
+      pointer-events: none;
+    }
+
+    &__markers{
+      transform: translateY(-24px);
+    }
+
+    &__tick {
+      width: 1px;
+      background-color: rgba(0,0,0,0.2);
+      height: 10px;
+      display: inline-block;
+      position: relative;
+      margin-left: -1px;
+      pointer-events: none;
+      &--marker{
+        margin-left:~"calc(50% - 1px)";
+        margin-top: 8px;
+      }
+    }
+
+  }
+
+  .slider__marker, .marker{
+    display: inline-block;
+    position: absolute;
+    transform: translateX(-50%);
+    height: 10px;
+  }
+  .marker__label{
+    margin: 0;
+    line-height: 1;
+  }
+
+
+
+  // Popover CSS
+
+  &.dragging .popover-container > .popover {
+    transition: none;
+  }
+
+  .popover-container {
+    margin-top: 12px;
+    .popover {
+      transition: left .2s ease;
+      background: #fff;
+      border: 1px solid @lightergrey;
+      box-shadow: @medium-shadow;
+      width: 150px;
+      left: -61px;
+      transform: translateX(~'calc(-50% + 14px)');
+      height: 50px;
+      padding: 10px;
+      font-size: 14px;
+      line-height: 20px;
+      color: @darkestgrey;
+      text-align: center;
+      border-radius: 4px;
+      cursor: initial;
+      position: absolute;
+
+      &__arrow {
+        position: relative;
+      	background: #ffffff;
+        height: 6px;
+        width: 12px;
+        top: -10px;
+        margin-left: -6px;
+        left: 50%;
+        border: none;
+        &:after, &:before {
+        	bottom: 100%;
+        	left: 50%;
+        	border: solid transparent;
+        	content: " ";
+        	height: 0;
+        	width: 0;
+        	position: absolute;
+        	pointer-events: none;
+        }
+
+        &:after {
+        	border-color: rgba(255, 255, 255, 0);
+        	border-bottom-color: #ffffff;
+        	border-width: 5px;
+        	margin-left: -5px;
+          top: initial;
+        }
+        &:before {
+        	border-color: rgba(220, 220, 220, 0);
+        	border-bottom-color: #dcdcdc;
+        	border-width: 6px;
+        	margin-left: -6px;
+        }
+      }
+    }
+  }
+}
